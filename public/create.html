@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <form role="form">
+      <h2>Create New Employee <small></small></h2>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+                        <input type="text" ng-model="fName" class="form-control input-lg" placeholder="First Name" tabindex="1">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type="text" ng-model="lName" class="form-control input-lg" placeholder="Last Name" tabindex="2">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type="text" ng-model="title" class="form-control input-lg" placeholder="Title" tabindex="3">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type="number" ng-model="age" class="form-control input-lg" placeholder="Age" tabindex="4">
+          </div>
+        </div>       
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="form-group">
+            <style>
+              select:invalid { color: gray; }
+            </style>
+            <select ng-model="sex" class="form-control input-lg" tabindex="5" required>
+              <option value="" selected disabled hidden>Sex</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" ng-model="phone" class="form-control input-lg" placeholder="Phone" tabindex="6">
+        <span ng-show="phoneError" style="color:red">Your phone number is not correct!</span>
+      </div>
+      <div class="form-group">
+        <input type="text" ng-model="email" class="form-control input-lg" placeholder="Email Address" tabindex="7">
+        <span ng-show="emailError" style="color:red">Your email address is not correct!</span>
+      </div>
+      <div class="form-group">
+        <style>
+          select:invalid { color: gray; }
+        </style>
+        <select ng-model="managerId" type="text" class="form-control input-lg" tabindex="8" required>
+          <option value="" selected disabled hidden>Manager</option>
+          <option ng-repeat="user in users" value="{{user.id}}">{{user.fName+" "+user.lName}}</option>
+        </select>
+      </div>
+      <div  flow-init="{singleFile: true}"
+        flow-file-added="addfile()">
+        <div class="form-group">
+          <div>
+            <div class="thumbnail" ng-show="$flow.files.length">
+              <img flow-img="$flow.files[0]" onload="javascript:limitPresentImage(this);"/>
+            </div>
+            <div>
+              <button class="btn btn-primary" ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}" value="Choose Image">Choose Image</button>
+              <button class="btn btn-primary" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}" value="Change">Change Image</button>
+              <button class="btn btn-danger" ng-show="$flow.files.length" ng-click="$flow.cancel();removefile()" value="Remove">Remove Image</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-12 col-md-6"><button ng-click="saveChanges($flow.files[0])" class="btn btn-primary btn-block btn-lg">Create</button></div>
+          <div class="col-xs-12 col-md-6"><button ng-click="cancel()" class="btn btn-success btn-block btn-lg">Cancel</button></div>
+        </div>
+      </div>
+    </form>
+  </div>  
+</div>
+

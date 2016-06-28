@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		<form role="form">
+			<h2>Employee Detail<small></small></h2>
+			<div class="row">
+				<div>
+					<img src="{{imgPath}}" onload="javascript:limituploadImage(this);">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<label>First Name</label>
+                        <input type="text" ng-model="fName" class="form-control input-lg" placeholder="First Name" tabindex="1" disabled>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<label>Last Name</label>
+						<input type="text" ng-model="lName" class="form-control input-lg" placeholder="Last Name" tabindex="2" disabled>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<label>Title</label>
+						<input ng-model="title" class="form-control input-lg" tabindex="3" disabled>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<label>Age</label>
+                        <input type="number" ng-model="age" class="form-control input-lg" placeholder="Age" tabindex="3" disabled>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<label>Sex</label>
+						<input ng-model="sex" class="form-control input-lg" tabindex="4" disabled>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Phone</label>
+				<input ng-model="phone" class="form-control input-lg" ng-click="cellfunction(user.phone)" tabindex="4">
+			</div>
+			<div class="form-group">
+				<label>Email</label>
+				<input ng-model="email" class="form-control input-lg" ng-click="mailfunction(user.email)" tabindex="5">
+			</div>
+			<div>
+				<label>Manager</label>
+				<br>
+				<a href="#/getManager/{{ managerId }}">{{ managerName }}</a>
+			</div>
+			<div class="form-group">
+				<label>Report To</label>
+				<a href="#/getReport/{{ id }}">{{ report }}</a>
+			</div>
+
+			<button ng-click="backto()" class="btn btn-success btn-block btn-lg">Back</button>
+		</form>
+	</div>	
+</div>
+

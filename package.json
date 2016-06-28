@@ -1,0 +1,25 @@
+{
+  "name": "employee_management",
+  "version": "1.0.0",
+  "description": "employee management",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeffrey",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "connect": "^3.4.1",
+    "connect-multiparty": "^2.0.0",
+    "express": "^4.13.4",
+    "fs": "0.0.2",
+    "gm": "^1.22.0",
+    "multiparty": "^4.1.2",
+    "mysql": "^2.10.2",
+    "ng-flow": "^2.1.4",
+    "ng-infinite-scroll": "^1.2.1",
+    "router": "^1.1.4",
+    "serve-static": "^1.10.3"
+  }
+}

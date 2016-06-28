@@ -1,0 +1,54 @@
+<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+<div class = "row">
+  <h2>Employee Management</h2>
+  <div class="row">
+    <div class="col-xs-4 col-md-2"><a href="#/Create" class="btn btn-primary btn-block btn-lg">Create</a></div>
+    <div class="col-xs-4 col-md-2"><a href="#/" class="btn btn-success btn-block btn-lg">Home</a></div>
+    <div class="col-xs-4 col-md-2"><button class="btn btn-success btn-block btn-lg" ng-click='backto()'>Back</button></div>
+  </div>
+  <br>
+  <div>
+  <form>
+    <div class="col-xs-6 col-sm-3 col-md-3">
+      <input type="text" class="form-control" ng-model="search" placeholder="Search">
+      </br>
+    </div>
+  </form>
+  </div>
+</div>
+<div class = "row">
+  <div class="table-responsive" >
+  <table class="table table-striped table-bordered table-hover" infinite-scroll="loadMore('limitNum')">
+    <tr>
+      <th></th>
+      <th>Edit</th>
+      <th>Delete</th>
+      <th ng-click="sort('fName')">Name
+        <span class="glyphicon sort-icon" ng-show="sortKey=='fName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+      </th>
+      <th ng-click="sort('title')">Title
+        <span class="glyphicon sort-icon" ng-show="sortKey=='title'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+      </th>
+      <th ng-click="sort('managerName')">Manager
+        <span class="glyphicon sort-icon" ng-show="sortKey=='managerName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+      </th>
+      <th ng-click="sort('report')">Report To
+        <span class="glyphicon sort-icon" ng-show="sortKey=='report'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+      </th>
+    </tr>
+    <tr ng-repeat = "user in users |limitTo:limitNum | orderBy:sortKey:reverse | filter:search ">
+      <td style="width:50px"><img src="{{user.imgPath}}" onload="javascript:limitImage(this);"></td>
+      <td><a class="btn btn-info btn-sm" href="#/Edit/{{ user.id }}">Edit</a><br/></td>
+      <td><button class="btn btn-info btn-sm" ng-click="deleteUser(user.id)">Delete</button></td>
+      <td><a href="#/getDetail/{{ user.id }}">{{ user.fName + " " + user.lName}}<a></td>
+      <td>{{ user.title }}</td> 
+      <td><a href="#/getManager/{{ user.managerId }}">{{ user.managerName }}<a></td>
+      <td><a href="#/getReport/{{ user.id }}">{{ user.report }}<a></td>       
+    </tr>
+  </table>
+  </div>
+</div>
+<div class = "row">
+  <button class="btn btn-info btn-sm topbutton" ng-click='goTop()'>Top</button>
+</div>
+</div>
